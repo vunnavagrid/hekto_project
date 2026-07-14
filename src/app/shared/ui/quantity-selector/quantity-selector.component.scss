@@ -1,0 +1,52 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.qty-selector {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-sm;
+  overflow: hidden;
+  height: 42px;
+
+  &__btn {
+    @include m.flex-center;
+    width: 36px;
+    border: none;
+    background: v.$color-bg-soft;
+    color: v.$color-text-primary;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color v.$transition-fast;
+
+    &:hover:not(:disabled) {
+      background: v.$color-border;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__input {
+    width: 48px;
+    border: none;
+    border-left: 1px solid v.$color-border;
+    border-right: 1px solid v.$color-border;
+    text-align: center;
+    font-size: v.$fs-body;
+    color: v.$color-text-primary;
+    -moz-appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+}

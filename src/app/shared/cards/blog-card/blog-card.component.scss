@@ -1,0 +1,54 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+
+  &__media {
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-radius: v.$radius-md;
+    overflow: hidden;
+    margin-bottom: v.$space-md;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform v.$transition-base;
+    }
+  }
+
+  &:hover &__media img {
+    transform: scale(1.05);
+  }
+
+  &__meta {
+    font-size: v.$fs-xs;
+    color: v.$color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__title {
+    font-size: v.$fs-h4;
+    margin-block: v.$space-sm;
+
+    a {
+      transition: color v.$transition-fast;
+
+      &:hover {
+        color: v.$color-primary;
+      }
+    }
+  }
+
+  &__link {
+    align-self: flex-start;
+    font-size: v.$fs-small;
+    font-weight: v.$fw-semibold;
+    color: v.$color-accent;
+    border-bottom: 1px solid currentColor;
+  }
+}

@@ -1,0 +1,100 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.product-list-page {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: v.$space-xl;
+  align-items: start;
+
+  @include m.laptop {
+    grid-template-columns: 1fr;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__toolbar {
+    @include m.flex-between;
+    flex-wrap: wrap;
+    gap: v.$space-sm;
+    margin-bottom: v.$space-lg;
+    padding-bottom: v.$space-md;
+    border-bottom: 1px solid v.$color-border;
+  }
+
+  &__count {
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+  }
+
+  &__field select {
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius-sm;
+    padding: 0.45rem 0.75rem;
+    font-size: v.$fs-small;
+    color: v.$color-text-primary;
+    background: v.$color-white;
+    cursor: pointer;
+
+    &:hover {
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__view-toggle {
+    display: flex;
+    border: 1px solid v.$color-border;
+    border-radius: v.$radius-sm;
+    overflow: hidden;
+
+    button {
+      @include m.flex-center;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: v.$color-white;
+      color: v.$color-text-secondary;
+      cursor: pointer;
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      &:hover {
+        color: v.$color-primary;
+      }
+
+      &.is-active {
+        background: v.$color-primary;
+        color: v.$color-white;
+      }
+
+      &:first-child {
+        border-right: 1px solid v.$color-border;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-md;
+  }
+
+  &__empty {
+    padding: v.$space-2xl 0;
+    text-align: center;
+    color: v.$color-text-muted;
+  }
+}

@@ -1,0 +1,82 @@
+// =========================================================
+// Hekto Design Tokens
+// Derived from the Figma screenshots: indigo/purple brand
+// color, magenta/pink accent for CTAs & badges, soft lavender
+// section backgrounds, generous rounded corners on cards.
+// =========================================================
+
+// ---- Color palette ----
+$color-primary: #7e33e0; // indigo/purple — brand, headings accents, icons
+$color-primary-dark: #5e1eb0;
+$color-accent: #ff4581; // pink/magenta — CTAs, badges, sale tags
+$color-accent-dark: #e22e68;
+
+$color-bg-body: #ffffff;
+$color-bg-soft: #f6f4fb; // lavender section background
+$color-bg-soft-2: #f1edfb; // hero / banner background
+$color-bg-topbar: #6e3ff2; // top utility strip
+$color-bg-titlebar: #f1edfb; // page title strip under header
+
+$color-text-primary: #1c1934; // near-black headings
+$color-text-secondary: #6b6880; // muted body copy
+$color-text-muted: #9794a8;
+$color-text-on-dark: #ffffff;
+
+$color-border: #ebe9f2;
+$color-border-strong: #ddd9ea;
+
+$color-star: #ffb800;
+$color-success: #2bb673;
+$color-white: #ffffff;
+$color-black: #000000;
+
+// ---- Typography ----
+$font-display: 'Jost', 'Poppins', sans-serif; // headings, logo
+$font-body: 'Poppins', 'Jost', sans-serif; // body copy, UI labels
+
+$fs-h1: 2.75rem;
+$fs-h2: 1.75rem;
+$fs-h3: 1.375rem;
+$fs-h4: 1.125rem;
+$fs-body: 0.9375rem;
+$fs-small: 0.8125rem;
+$fs-xs: 0.6875rem;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+// ---- Spacing scale ----
+$space-2xs: 0.25rem;
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+$space-3xl: 4.5rem;
+
+// ---- Layout ----
+$container-max: 1200px;
+$container-padding: 1.25rem;
+
+// ---- Radii & shadows ----
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-pill: 999px;
+
+$shadow-sm: 0 2px 8px rgba(28, 25, 52, 0.06);
+$shadow-md: 0 8px 24px rgba(28, 25, 52, 0.08);
+$shadow-card: 0 4px 18px rgba(28, 25, 52, 0.07);
+
+// ---- Transitions ----
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;
+
+// ---- Breakpoints (used by mixins) ----
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1280px;

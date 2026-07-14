@@ -1,0 +1,108 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.product-row {
+  @include m.card-surface;
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: v.$space-lg;
+  align-items: center;
+  padding: v.$space-md;
+
+  &:hover {
+    box-shadow: v.$shadow-card;
+  }
+
+  &__media {
+    display: block;
+    aspect-ratio: 1 / 1;
+    border-radius: v.$radius-md;
+    overflow: hidden;
+    background: v.$color-bg-soft;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-2xs;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: v.$fs-h4;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text-primary;
+    transition: color v.$transition-fast;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+
+  &__desc {
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    @include m.line-clamp(2);
+    margin-top: v.$space-2xs;
+  }
+
+  &__price-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: v.$space-xs;
+    text-align: right;
+  }
+
+  &__price {
+    font-size: v.$fs-h4;
+    font-weight: v.$fw-semibold;
+    color: v.$color-accent;
+  }
+
+  &__old-price {
+    font-size: v.$fs-small;
+    color: v.$color-text-muted;
+    text-decoration: line-through;
+  }
+
+  &__add {
+    @include m.btn-base;
+    background: v.$color-primary;
+    color: v.$color-white;
+    padding: 0.5rem 1.1rem;
+    font-size: v.$fs-small;
+
+    &:hover {
+      background: v.$color-primary-dark;
+    }
+  }
+
+  @include m.tablet {
+    grid-template-columns: 90px 1fr;
+    grid-template-areas:
+      'media info'
+      'price price';
+
+    &__media {
+      grid-area: media;
+    }
+    &__info {
+      grid-area: info;
+    }
+    &__price-col {
+      grid-area: price;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      margin-top: v.$space-sm;
+    }
+  }
+}

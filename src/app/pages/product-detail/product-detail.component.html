@@ -1,0 +1,161 @@
+@if (product(); as p) {
+  <app-page-title
+    [title]="p.name"
+    [breadcrumbs]="[{ label: 'Home', link: '/' }, { label: 'Products', link: '/products' }, { label: p.name }]"
+  />
+
+  <section class="section">
+    <div class="container product-details">
+      <div class="product-details__top">
+        <div class="product-details__gallery">
+          <div class="product-details__main-image">
+            <img [src]="activeImage()" [alt]="p.name" />
+          </div>
+          @if (galleryImages().length > 1) {
+            <div class="product-details__thumbs">
+              @for (img of galleryImages(); track img; let i = $index) {
+                <button
+                  type="button"
+                  class="product-details__thumb"
+                  [class.is-active]="i === activeImageIndex()"
+                  (click)="selectImage(i)"
+                  [attr.aria-label]="'View image ' + (i + 1)"
+                >
+                  <img [src]="img" [alt]="p.name" />
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="product-details__info">
+          <h1 class="product-details__name">{{ p.name }}</h1>
+          <app-rating-stars [rating]="p.rating" [reviewCount]="p.reviewCount" size="md" />
+
+          <div class="product-details__price-row">
+            <span class="product-details__price">${{ p.price }}</span>
+            @if (p.oldPrice) {
+              <span class="product-details__old-price">${{ p.oldPrice }}</span>
+            }
+          </div>
+
+          @if (p.description) {
+            <p class="product-details__desc">{{ p.description }}</p>
+          }
+
+          <div class="product-details__actions">
+            <app-quantity-selector [value]="quantity()" (valueChange)="setQuantity($event)" />
+            <button type="button" class="btn-accent" (click)="addToCart(p)">Add to Cart</button>
+          </div>
+
+          @if (addedToCart()) {
+            <p class="product-details__added">
+              Added to cart.
+              <a routerLink="/cart">View cart</a>
+            </p>
+          }
+
+          @if (p.brand) {
+            <p class="product-details__meta"><strong>Brand:</strong> {{ p.brand }}</p>
+          }
+          <p class="product-details__meta"><strong>Category:</strong> {{ p.category }}</p>
+          <p class="product-details__meta">
+            <strong>Availability:</strong>
+            {{ p.inStock ? 'In Stock' : 'Out of Stock' }}
+          </p>
+        </div>
+      </div>
+
+      <div class="product-details__tabs">
+        <app-tabs [tabs]="tabs" [activeIndex]="activeTabIndex()" (indexChange)="setActiveTab($event)" />
+
+        <div class="product-details__panel">
+          @switch (activeTabIndex()) {
+            @case (0) {
+              <div class="product-details__description">
+                <p>{{ p.description }}</p>
+                @if (p.detailHighlights) {
+                  <ul>
+                    @for (highlight of p.detailHighlights; track highlight) {
+                      <li>{{ highlight }}</li>
+                    }
+                  </ul>
+                }
+              </div>
+            }
+            @case (1) {
+              <table class="product-details__specs">
+                <tbody>
+                  <tr>
+                    <th>Brand</th>
+                    <td>{{ p.brand ?? '—' }}</td>
+                  </tr>
+                  <tr>
+                    <th>Category</th>
+                    <td>{{ p.category }}</td>
+                  </tr>
+                  <tr>
+                    <th>Weight</th>
+                    <td>0.4 kg</td>
+                  </tr>
+                  <tr>
+                    <th>Dimensions</th>
+                    <td>18 &times; 14 &times; 8 cm</td>
+                  </tr>
+                  <tr>
+                    <th>Warranty</th>
+                    <td>1 year limited manufacturer warranty</td>
+                  </tr>
+                </tbody>
+              </table>
+            }
+            @case (2) {
+              <div class="product-details__reviews">
+                <div class="product-details__reviews-summary">
+                  <app-rating-stars [rating]="averageReviewRating()" size="md" />
+                  <span>{{ averageReviewRating().toFixed(1) }} out of 5 ({{ reviews.length }} reviews)</span>
+                </div>
+                @for (review of reviews; track review.author) {
+                  <article class="product-details__review">
+                    <div class="product-details__review-head">
+                      <strong>{{ review.author }}</strong>
+                      <span>{{ review.date }}</span>
+                    </div>
+                    <app-rating-stars [rating]="review.rating" />
+                    <p>{{ review.comment }}</p>
+                  </article>
+                }
+              </div>
+            }
+            @case (3) {
+              <div class="product-details__video">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                  <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M26 22l18 10-18 10V22z" fill="currentColor" />
+                </svg>
+                <p>Product video coming soon</p>
+              </div>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="product-details__related">
+        <h2 class="section-title">Related Products</h2>
+        <div class="related-grid">
+          @for (related of (relatedProducts$ | async); track related.id) {
+            <app-product-card [product]="related" />
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="section">
+    <div class="container product-details__not-found">
+      <h1>Product not found</h1>
+      <p>The product you're looking for doesn't exist or may have been removed.</p>
+      <a routerLink="/products" class="btn-accent">Back to Products</a>
+    </div>
+  </section>
+}

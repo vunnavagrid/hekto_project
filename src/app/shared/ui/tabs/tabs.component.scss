@@ -1,0 +1,34 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.tabs {
+  display: flex;
+  gap: v.$space-xl;
+  border-bottom: 1px solid v.$color-border;
+  flex-wrap: wrap;
+
+  &__btn {
+    background: none;
+    border: none;
+    padding-block: v.$space-sm v.$space-md;
+    font-size: v.$fs-body;
+    font-weight: v.$fw-medium;
+    color: v.$color-text-secondary;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color v.$transition-fast, border-color v.$transition-fast;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+
+    &.is-active {
+      color: v.$color-primary;
+      border-color: v.$color-primary;
+    }
+  }
+
+  @include m.mobile {
+    gap: v.$space-md;
+  }
+}

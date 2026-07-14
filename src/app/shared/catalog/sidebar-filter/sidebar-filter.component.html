@@ -1,0 +1,81 @@
+<aside class="sidebar-filter">
+  <div class="sidebar-filter__header">
+    <h2 class="sidebar-filter__heading">Filter</h2>
+    @if (hasActiveFilters()) {
+      <button type="button" class="sidebar-filter__clear" (click)="clearAll()">Clear all</button>
+    }
+  </div>
+
+  <section class="sidebar-filter__group">
+    <h3 class="sidebar-filter__title">Product Brand</h3>
+    <ul class="sidebar-filter__list">
+      @for (brand of brandOptions(); track brand.name) {
+        <li>
+          <label class="sidebar-filter__checkbox">
+            <input
+              type="checkbox"
+              [checked]="selectedBrands().has(brand.name)"
+              (change)="toggleBrand(brand.name)"
+            />
+            <span>{{ brand.name }}</span>
+            <span class="sidebar-filter__count">{{ brand.count }}</span>
+          </label>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="sidebar-filter__group">
+    <h3 class="sidebar-filter__title">Rating</h3>
+    <ul class="sidebar-filter__list">
+      @for (rating of ratingOptions; track rating) {
+        <li>
+          <label class="sidebar-filter__checkbox">
+            <input
+              type="checkbox"
+              [checked]="selectedRating() === rating"
+              (change)="setRating(rating)"
+            />
+            <app-rating-stars [rating]="rating" />
+          </label>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="sidebar-filter__group">
+    <h3 class="sidebar-filter__title">Categories</h3>
+    <ul class="sidebar-filter__list">
+      @for (category of categoryOptions(); track category.name) {
+        <li>
+          <label class="sidebar-filter__checkbox">
+            <input
+              type="checkbox"
+              [checked]="selectedCategories().has(category.name)"
+              (change)="toggleCategory(category.name)"
+            />
+            <span>{{ category.name }}</span>
+            <span class="sidebar-filter__count">{{ category.count }}</span>
+          </label>
+        </li>
+      }
+    </ul>
+  </section>
+
+  <section class="sidebar-filter__group">
+    <h3 class="sidebar-filter__title">Price</h3>
+    <input
+      class="sidebar-filter__range"
+      type="range"
+      min="0"
+      [max]="priceCeiling()"
+      step="10"
+      [value]="maxPrice()"
+      (input)="onPriceInput($any($event.target).value)"
+    />
+    <div class="sidebar-filter__price-readout">
+      <span>$0</span>
+      <span>${{ maxPrice() }}</span>
+    </div>
+  </section>
+</aside>

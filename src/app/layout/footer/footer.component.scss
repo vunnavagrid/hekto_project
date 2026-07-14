@@ -1,0 +1,97 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.footer {
+  background: v.$color-bg-soft;
+  margin-top: v.$space-2xl;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: v.$space-xl;
+    padding-block: v.$space-2xl;
+
+    @include m.laptop {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include m.mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: v.$font-display;
+    font-size: 1.5rem;
+    font-weight: v.$fw-semibold;
+    color: v.$color-white;
+    background: v.$color-accent;
+    border-radius: v.$radius-sm;
+    padding: 0.3rem 1rem;
+    margin-bottom: v.$space-md;
+  }
+
+  &__address {
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    max-width: 230px;
+  }
+
+  &__group-title {
+    font-size: v.$fs-h4;
+    font-weight: v.$fw-semibold;
+    margin-bottom: v.$space-md;
+  }
+
+  &__group-list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-sm;
+
+    a {
+      font-size: v.$fs-small;
+      color: v.$color-text-secondary;
+      transition: color v.$transition-fast;
+
+      &:hover {
+        color: v.$color-primary;
+      }
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid v.$color-border-strong;
+  }
+
+  &__bottom-inner {
+    @include m.flex-between;
+    padding-block: v.$space-md;
+    font-size: v.$fs-small;
+    color: v.$color-text-muted;
+
+    @include m.mobile {
+      flex-direction: column;
+      gap: v.$space-sm;
+      text-align: center;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 6px;
+
+    span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: v.$color-border-strong;
+
+      &:first-child {
+        background: v.$color-accent;
+      }
+    }
+  }
+}

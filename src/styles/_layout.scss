@@ -1,0 +1,77 @@
+// Shared layout grids and page-level patterns
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-lg;
+
+  @include m.laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-md;
+  }
+
+  @include m.mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-sm;
+  }
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-xl;
+  justify-content: center;
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-lg;
+  }
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-xl;
+
+  @include m.tablet {
+    grid-template-columns: 1fr;
+    gap: v.$space-lg;
+  }
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: v.$space-lg;
+
+  @include m.laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-md;
+  }
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: v.$space-lg;
+
+  @include m.tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-md;
+  }
+
+  @include m.mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: v.$space-sm;
+  }
+}

@@ -1,0 +1,4 @@
+// Global stylesheet entry — layered architecture
+@use 'styles/base';
+@use 'styles/utilities';
+@use 'styles/layout';

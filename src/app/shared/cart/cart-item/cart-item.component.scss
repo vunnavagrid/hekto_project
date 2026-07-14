@@ -1,0 +1,103 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 72px 2fr 0.8fr 1fr 0.8fr 40px;
+  align-items: center;
+  gap: v.$space-md;
+  padding-block: v.$space-md;
+  border-bottom: 1px solid v.$color-border;
+
+  &__media {
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: v.$radius-md;
+    overflow: hidden;
+    background: v.$color-bg-soft;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: v.$fs-body;
+    font-weight: v.$fw-medium;
+    color: v.$color-text-primary;
+    transition: color v.$transition-fast;
+
+    &:hover {
+      color: v.$color-primary;
+    }
+  }
+
+  &__price,
+  &__total {
+    font-size: v.$fs-body;
+    color: v.$color-text-secondary;
+  }
+
+  &__total {
+    font-weight: v.$fw-semibold;
+    color: v.$color-accent;
+  }
+
+  &__remove {
+    @include m.flex-center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid v.$color-border;
+    background: v.$color-white;
+    color: v.$color-text-muted;
+    cursor: pointer;
+    transition: color v.$transition-fast, border-color v.$transition-fast;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    &:hover {
+      color: v.$color-accent;
+      border-color: v.$color-accent;
+    }
+  }
+
+  @include m.tablet {
+    grid-template-columns: 60px 1fr;
+    grid-template-areas:
+      'media name'
+      'media price'
+      'qty qty'
+      'total remove';
+    row-gap: v.$space-xs;
+
+    &__media {
+      grid-area: media;
+      width: 60px;
+      height: 60px;
+    }
+    &__name {
+      grid-area: name;
+    }
+    &__price {
+      grid-area: price;
+    }
+    &__qty {
+      grid-area: qty;
+      margin-top: v.$space-xs;
+    }
+    &__total {
+      grid-area: total;
+    }
+    &__remove {
+      grid-area: remove;
+      justify-self: end;
+    }
+  }
+}

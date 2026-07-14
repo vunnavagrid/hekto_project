@@ -1,0 +1,54 @@
+<header class="header">
+  <div class="header__topbar">
+    <div class="container header__topbar-inner">
+      <div class="header__topbar-contact">
+        <a href="mailto:info@hekto.com" class="header__topbar-link">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 4h16v12H2z" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M3 5l7 6 7-6" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          info&#64;hekto.com
+        </a>
+        <a href="tel:1234567890" class="header__topbar-link">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3c4 0 13 9 13 13l-3 2c-1-1-2-3-2-4-2-1-5-4-6-6-1 0-3-1-4-2z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          (12) 345 67890
+        </a>
+      </div>
+      <div class="header__topbar-meta">
+        <span class="header__topbar-link">English</span>
+        <span class="header__topbar-link">USD</span>
+        <a routerLink="/" class="header__topbar-link">Login</a>
+        <a routerLink="/cart" class="header__topbar-link">Wishlist</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container header__main">
+    <a routerLink="/" class="header__logo" (click)="closeMobileNav()">Hekto</a>
+
+    <nav class="header__nav" [class.is-open]="isMobileNavOpen()">
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileNav()">Home</a>
+      <a routerLink="/products" routerLinkActive="is-active" (click)="closeMobileNav()">Products</a>
+      <a routerLink="/" (click)="closeMobileNav()">Blog</a>
+      <a routerLink="/" (click)="closeMobileNav()">Contact</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="header__icon-btn" type="button" aria-label="Search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="13.5" y1="13.5" x2="18" y2="18" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+      <a routerLink="/cart" class="header__icon-btn header__cart-btn" aria-label="View cart">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h2l1.5 10h9L17 6H6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="14.5" cy="17" r="1.2" fill="currentColor"/></svg>
+        @if (cartCount() > 0) {
+          <span class="header__cart-badge">{{ cartCount() }}</span>
+        }
+      </a>
+      <button
+        class="header__icon-btn header__menu-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        [attr.aria-expanded]="isMobileNavOpen()"
+        (click)="toggleMobileNav()"
+      >
+        <svg viewBox="0 0 20 20" aria-hidden="true"><line x1="2" y1="5" x2="18" y2="5" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="10" x2="18" y2="10" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="15" x2="18" y2="15" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+    </div>
+  </div>
+</header>

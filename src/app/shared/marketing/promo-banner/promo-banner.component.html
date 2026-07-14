@@ -1,0 +1,42 @@
+<div
+  class="promo-banner promo-banner--{{ variant() }}"
+  [class.promo-banner--image-left]="imagePosition() === 'left'"
+>
+  <div class="promo-banner__content">
+    @if (eyebrow()) {
+      <span class="promo-banner__eyebrow">{{ eyebrow() }}</span>
+    }
+    <h2 class="promo-banner__title">{{ title() }}</h2>
+    @if (description()) {
+      <p class="promo-banner__desc">{{ description() }}</p>
+    }
+    @if (features()) {
+      <ul class="promo-banner__features">
+        @for (feature of features(); track feature) {
+          <li>{{ feature }}</li>
+        }
+      </ul>
+    }
+    <button type="button" class="btn-accent promo-banner__cta">
+      {{ ctaLabel() }}
+    </button>
+  </div>
+
+  <div class="promo-banner__media">
+    <img [src]="image()" [alt]="title()" loading="lazy" />
+    @if (badgeLabel()) {
+      <span class="promo-banner__badge">
+        <strong>{{ badgeLabel() }}</strong>
+        @if (badgeSub()) {
+          <small>{{ badgeSub() }}</small>
+        }
+      </span>
+    }
+  </div>
+
+  @if (showDots()) {
+    <div class="promo-banner__dots" aria-hidden="true">
+      <span class="is-active"></span><span></span><span></span>
+    </div>
+  }
+</div>

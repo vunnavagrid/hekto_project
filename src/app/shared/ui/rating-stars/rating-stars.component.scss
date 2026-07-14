@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as v;
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: v.$space-2xs;
+
+  &__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  &__star {
+    width: 13px;
+    height: 13px;
+    color: v.$color-star;
+    fill: currentColor;
+
+    &.is-empty {
+      color: v.$color-border-strong;
+      fill: currentColor;
+    }
+  }
+
+  &__count {
+    font-size: v.$fs-xs;
+    color: v.$color-text-muted;
+  }
+
+  &--md {
+    .rating__star {
+      width: 16px;
+      height: 16px;
+    }
+
+    .rating__count {
+      font-size: v.$fs-small;
+    }
+  }
+}

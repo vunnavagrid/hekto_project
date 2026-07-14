@@ -1,0 +1,246 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.product-details {
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: v.$space-2xl;
+    margin-bottom: v.$space-2xl;
+
+    @include m.laptop {
+      grid-template-columns: 1fr;
+      gap: v.$space-lg;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-md;
+  }
+
+  &__main-image {
+    @include m.card-surface;
+    @include m.flex-center;
+    aspect-ratio: 1 / 1;
+    background: v.$color-bg-soft;
+    padding: v.$space-lg;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    gap: v.$space-sm;
+  }
+
+  &__thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: v.$radius-sm;
+    border: 1px solid v.$color-border;
+    background: v.$color-bg-soft;
+    padding: v.$space-2xs;
+    cursor: pointer;
+    transition: border-color v.$transition-fast;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    &.is-active {
+      border-color: v.$color-primary;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-sm;
+  }
+
+  &__name {
+    font-size: v.$fs-h1;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: v.$space-sm;
+    margin-top: v.$space-2xs;
+  }
+
+  &__price {
+    font-size: v.$fs-h2;
+    font-weight: v.$fw-semibold;
+    color: v.$color-accent;
+  }
+
+  &__old-price {
+    font-size: v.$fs-h4;
+    color: v.$color-text-muted;
+    text-decoration: line-through;
+  }
+
+  &__desc {
+    color: v.$color-text-secondary;
+    margin-top: v.$space-xs;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: stretch;
+    gap: v.$space-md;
+    margin-top: v.$space-md;
+  }
+
+  &__added {
+    color: v.$color-success;
+    font-size: v.$fs-small;
+
+    a {
+      color: v.$color-primary;
+      font-weight: v.$fw-medium;
+      text-decoration: underline;
+    }
+  }
+
+  &__meta {
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    margin-top: v.$space-2xs;
+
+    strong {
+      color: v.$color-text-primary;
+    }
+  }
+
+  &__tabs {
+    margin-bottom: v.$space-2xl;
+  }
+
+  &__panel {
+    padding-top: v.$space-lg;
+  }
+
+  &__description {
+    color: v.$color-text-secondary;
+
+    ul {
+      margin-top: v.$space-sm;
+      display: flex;
+      flex-direction: column;
+      gap: v.$space-xs;
+
+      li {
+        position: relative;
+        padding-left: v.$space-md;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0.55em;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: v.$color-primary;
+        }
+      }
+    }
+  }
+
+  &__specs {
+    width: 100%;
+    max-width: 560px;
+    border-collapse: collapse;
+
+    th,
+    td {
+      text-align: left;
+      padding: v.$space-sm v.$space-md;
+      border-bottom: 1px solid v.$color-border;
+      font-size: v.$fs-small;
+    }
+
+    th {
+      width: 160px;
+      color: v.$color-text-primary;
+      font-weight: v.$fw-semibold;
+      background: v.$color-bg-soft;
+    }
+
+    td {
+      color: v.$color-text-secondary;
+    }
+  }
+
+  &__reviews {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-lg;
+    max-width: 640px;
+  }
+
+  &__reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    padding-bottom: v.$space-md;
+    border-bottom: 1px solid v.$color-border;
+  }
+
+  &__review {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-xs;
+  }
+
+  &__review-head {
+    @include m.flex-between;
+    font-size: v.$fs-small;
+
+    span {
+      color: v.$color-text-muted;
+    }
+  }
+
+  &__video {
+    @include m.flex-center;
+    flex-direction: column;
+    gap: v.$space-sm;
+    aspect-ratio: 16 / 7;
+    max-width: 640px;
+    border-radius: v.$radius-md;
+    background: v.$color-bg-soft;
+    color: v.$color-primary;
+
+    svg {
+      width: 56px;
+      height: 56px;
+    }
+
+    p {
+      color: v.$color-text-muted;
+      font-size: v.$fs-small;
+    }
+  }
+
+  &__not-found {
+    text-align: center;
+    padding-block: v.$space-3xl;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: v.$space-md;
+  }
+}

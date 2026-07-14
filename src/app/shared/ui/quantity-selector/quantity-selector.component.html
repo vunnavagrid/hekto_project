@@ -1,0 +1,29 @@
+<div class="qty-selector">
+  <button
+    type="button"
+    class="qty-selector__btn"
+    (click)="decrement()"
+    [disabled]="value() <= min()"
+    aria-label="Decrease quantity"
+  >
+    &minus;
+  </button>
+  <input
+    class="qty-selector__input"
+    type="number"
+    [value]="value()"
+    [min]="min()"
+    [max]="max()"
+    (change)="onInput($any($event.target).value)"
+    aria-label="Quantity"
+  />
+  <button
+    type="button"
+    class="qty-selector__btn"
+    (click)="increment()"
+    [disabled]="value() >= max()"
+    aria-label="Increase quantity"
+  >
+    &#43;
+  </button>
+</div>

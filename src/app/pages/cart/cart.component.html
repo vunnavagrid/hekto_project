@@ -1,0 +1,36 @@
+<app-page-title title="Shopping Cart" [breadcrumbs]="[{ label: 'Home', link: '/' }, { label: 'Cart' }]" />
+
+<section class="section">
+  <div class="container">
+    @if (items().length === 0) {
+      <app-empty-state
+        title="Your Cart Is Empty"
+        message="Looks like you haven't added anything yet. Browse our products and find something you'll love."
+        ctaLabel="Continue Shopping"
+        ctaLink="/products"
+      />
+    } @else {
+      <div class="cart-page">
+        <div class="cart-page__list">
+          <div class="cart-page__head">
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Total</span>
+            <span></span>
+          </div>
+
+          @for (item of items(); track item.product.id) {
+            <app-cart-item
+              [item]="item"
+              (quantityChange)="onQuantityChange(item.product.id, $event)"
+              (remove)="onRemove(item.product.id)"
+            />
+          }
+        </div>
+
+        <app-cart-summary [subtotal]="subtotal()" (checkout)="onCheckout()" />
+      </div>
+    }
+  </div>
+</section>

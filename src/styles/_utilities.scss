@@ -1,0 +1,354 @@
+// Atomic utility classes derived from design tokens
+@use 'variables' as v;
+@use 'mixins' as m;
+
+// ---- Layout ----
+.u-container {
+  @include m.container;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-flex-center {
+  @include m.flex-center;
+}
+
+.u-flex-between {
+  @include m.flex-between;
+}
+
+.u-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-items-center {
+  align-items: center;
+}
+
+.u-items-start {
+  align-items: flex-start;
+}
+
+.u-items-baseline {
+  align-items: baseline;
+}
+
+.u-justify-center {
+  justify-content: center;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.u-min-w-0 {
+  min-width: 0;
+}
+
+.u-w-full {
+  width: 100%;
+}
+
+.u-h-full {
+  height: 100%;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-left {
+  text-align: left;
+}
+
+// ---- Typography ----
+.u-font-display {
+  font-family: v.$font-display;
+}
+
+.u-font-body {
+  font-family: v.$font-body;
+}
+
+.u-fw-regular {
+  font-weight: v.$fw-regular;
+}
+
+.u-fw-medium {
+  font-weight: v.$fw-medium;
+}
+
+.u-fw-semibold {
+  font-weight: v.$fw-semibold;
+}
+
+.u-fw-bold {
+  font-weight: v.$fw-bold;
+}
+
+.u-fs-h1 {
+  font-size: v.$fs-h1;
+}
+
+.u-fs-h2 {
+  font-size: v.$fs-h2;
+}
+
+.u-fs-h3 {
+  font-size: v.$fs-h3;
+}
+
+.u-fs-h4 {
+  font-size: v.$fs-h4;
+}
+
+.u-fs-body {
+  font-size: v.$fs-body;
+}
+
+.u-fs-small {
+  font-size: v.$fs-small;
+}
+
+.u-fs-xs {
+  font-size: v.$fs-xs;
+}
+
+.u-text-primary {
+  color: v.$color-text-primary;
+}
+
+.u-text-secondary {
+  color: v.$color-text-secondary;
+}
+
+.u-text-muted {
+  color: v.$color-text-muted;
+}
+
+.u-text-on-dark {
+  color: v.$color-text-on-dark;
+}
+
+.u-text-accent {
+  color: v.$color-accent;
+}
+
+.u-text-brand {
+  color: v.$color-primary;
+}
+
+.u-text-success {
+  color: v.$color-success;
+}
+
+.u-line-through {
+  text-decoration: line-through;
+}
+
+.u-underline {
+  text-decoration: underline;
+}
+
+.u-line-clamp-1 {
+  @include m.line-clamp(1);
+}
+
+.u-line-clamp-2 {
+  @include m.line-clamp(2);
+}
+
+// ---- Backgrounds ----
+.u-bg-body {
+  background-color: v.$color-bg-body;
+}
+
+.u-bg-soft {
+  background-color: v.$color-bg-soft;
+}
+
+.u-bg-soft-2 {
+  background-color: v.$color-bg-soft-2;
+}
+
+.u-bg-white {
+  background-color: v.$color-white;
+}
+
+// ---- Spacing (margin) ----
+.u-mt-2xs {
+  margin-top: v.$space-2xs;
+}
+
+.u-mt-xs {
+  margin-top: v.$space-xs;
+}
+
+.u-mt-sm {
+  margin-top: v.$space-sm;
+}
+
+.u-mt-md {
+  margin-top: v.$space-md;
+}
+
+.u-mt-lg {
+  margin-top: v.$space-lg;
+}
+
+.u-mt-xl {
+  margin-top: v.$space-xl;
+}
+
+.u-mb-xs {
+  margin-bottom: v.$space-xs;
+}
+
+.u-mb-sm {
+  margin-bottom: v.$space-sm;
+}
+
+.u-mb-md {
+  margin-bottom: v.$space-md;
+}
+
+.u-mb-lg {
+  margin-bottom: v.$space-lg;
+}
+
+.u-mb-xl {
+  margin-bottom: v.$space-xl;
+}
+
+// ---- Spacing (padding) ----
+.u-pt-xl {
+  padding-top: v.$space-xl;
+}
+
+.u-p-sm {
+  padding: v.$space-sm;
+}
+
+.u-p-md {
+  padding: v.$space-md;
+}
+
+.u-p-lg {
+  padding: v.$space-lg;
+}
+
+.u-py-xs {
+  padding-block: v.$space-xs;
+}
+
+.u-py-sm {
+  padding-block: v.$space-sm;
+}
+
+.u-py-md {
+  padding-block: v.$space-md;
+}
+
+// ---- Gaps ----
+.u-gap-2xs {
+  gap: v.$space-2xs;
+}
+
+.u-gap-xs {
+  gap: v.$space-xs;
+}
+
+.u-gap-sm {
+  gap: v.$space-sm;
+}
+
+.u-gap-md {
+  gap: v.$space-md;
+}
+
+.u-gap-lg {
+  gap: v.$space-lg;
+}
+
+.u-gap-xl {
+  gap: v.$space-xl;
+}
+
+// ---- Borders & surfaces ----
+.u-border {
+  border: 1px solid v.$color-border;
+}
+
+.u-border-b {
+  border-bottom: 1px solid v.$color-border;
+}
+
+.u-rounded-sm {
+  border-radius: v.$radius-sm;
+}
+
+.u-rounded-md {
+  border-radius: v.$radius-md;
+}
+
+.u-rounded-lg {
+  border-radius: v.$radius-lg;
+}
+
+.u-rounded-pill {
+  border-radius: v.$radius-pill;
+}
+
+.u-shadow-sm {
+  box-shadow: v.$shadow-sm;
+}
+
+.u-shadow-md {
+  box-shadow: v.$shadow-md;
+}
+
+.u-shadow-card {
+  box-shadow: v.$shadow-card;
+}
+
+.u-card-surface {
+  @include m.card-surface;
+}
+
+// ---- Accessibility ----
+.u-visually-hidden {
+  @include m.visually-hidden;
+}
+
+// ---- Component shortcuts (global patterns) ----
+.container {
+  @include m.container;
+}
+
+.btn-accent {
+  @include m.btn-accent;
+}
+
+.section {
+  padding-block: v.$space-2xl;
+
+  @include m.tablet {
+    padding-block: v.$space-xl;
+  }
+
+  &--soft {
+    background: v.$color-bg-soft;
+  }
+}
+
+.section-title {
+  @include m.section-title;
+  margin-bottom: v.$space-xl;
+}
+
+.visually-hidden {
+  @include m.visually-hidden;
+}

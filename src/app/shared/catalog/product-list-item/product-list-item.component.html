@@ -1,0 +1,21 @@
+<article class="product-row">
+  <a [routerLink]="['/products', product().id]" class="product-row__media">
+    <img [src]="product().image" [alt]="product().name" loading="lazy" />
+  </a>
+
+  <div class="product-row__info">
+    <a [routerLink]="['/products', product().id]" class="product-row__name">{{ product().name }}</a>
+    <app-rating-stars [rating]="product().rating" [reviewCount]="product().reviewCount" />
+    @if (product().description) {
+      <p class="product-row__desc">{{ product().description }}</p>
+    }
+  </div>
+
+  <div class="product-row__price-col">
+    <span class="product-row__price">${{ product().price }}</span>
+    @if (product().oldPrice) {
+      <span class="product-row__old-price">${{ product().oldPrice }}</span>
+    }
+    <button type="button" class="product-row__add" (click)="addToCart()">Add to Cart</button>
+  </div>
+</article>

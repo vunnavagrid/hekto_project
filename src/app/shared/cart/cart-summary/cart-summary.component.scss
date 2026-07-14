@@ -1,0 +1,43 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.cart-summary {
+  @include m.card-surface;
+  padding: v.$space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  align-self: start;
+
+  &__title {
+    font-size: v.$fs-h4;
+    font-weight: v.$fw-semibold;
+    margin-bottom: v.$space-xs;
+  }
+
+  &__row {
+    @include m.flex-between;
+    font-size: v.$fs-body;
+    color: v.$color-text-secondary;
+    padding-block: v.$space-xs;
+    border-bottom: 1px solid v.$color-border;
+
+    &--total {
+      border-bottom: none;
+      font-size: v.$fs-h4;
+      font-weight: v.$fw-semibold;
+      color: v.$color-text-primary;
+      padding-top: v.$space-sm;
+    }
+  }
+
+  &__hint {
+    font-size: v.$fs-xs;
+    color: v.$color-text-muted;
+  }
+
+  &__checkout {
+    width: 100%;
+    margin-top: v.$space-sm;
+  }
+}

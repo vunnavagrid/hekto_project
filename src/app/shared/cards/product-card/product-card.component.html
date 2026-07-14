@@ -1,0 +1,28 @@
+<article class="product-card">
+  <a [routerLink]="['/products', product().id]" class="product-card__media">
+    <img [src]="product().image" [alt]="product().name" loading="lazy" />
+
+    @if (discountPercent) {
+      <span class="product-card__badge product-card__badge--sale">-{{ discountPercent }}%</span>
+    } @else if (product().tag === 'new') {
+      <span class="product-card__badge product-card__badge--new">New</span>
+    } @else if (product().tag === 'hot') {
+      <span class="product-card__badge product-card__badge--hot">Hot</span>
+    }
+
+    <button class="product-card__quick-add" type="button" (click)="addToCart($event)" aria-label="Add to cart">
+      <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3h2l1.5 10h9L17 6H6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="17" r="1.2" fill="currentColor"/><circle cx="14.5" cy="17" r="1.2" fill="currentColor"/></svg>
+    </button>
+  </a>
+
+  <div class="product-card__body">
+    <a [routerLink]="['/products', product().id]" class="product-card__name">{{ product().name }}</a>
+    <app-rating-stars [rating]="product().rating" />
+    <div class="product-card__price-row">
+      <span class="product-card__price">${{ product().price }}</span>
+      @if (product().oldPrice) {
+        <span class="product-card__old-price">${{ product().oldPrice }}</span>
+      }
+    </div>
+  </div>
+</article>

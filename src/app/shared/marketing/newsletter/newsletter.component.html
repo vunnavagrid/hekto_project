@@ -1,0 +1,23 @@
+<div class="newsletter">
+  <div class="container newsletter__inner">
+    <h2 class="newsletter__title">Get Latest Update By Subscribe<br />Our Newsletter</h2>
+
+    @if (submitted()) {
+      <p class="newsletter__success">You're subscribed. Welcome to Hekto!</p>
+    } @else {
+      <form class="newsletter__form" (ngSubmit)="onSubmit()">
+        <label class="visually-hidden" for="newsletter-email">Email address</label>
+        <input
+          id="newsletter-email"
+          type="email"
+          name="email"
+          placeholder="Enter Your Email"
+          required
+          [ngModel]="email()"
+          (ngModelChange)="email.set($event)"
+        />
+        <button type="submit" class="btn-accent">Subscribe</button>
+      </form>
+    }
+  </div>
+</div>

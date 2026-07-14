@@ -1,0 +1,122 @@
+@use 'variables' as v;
+
+// ---- Responsive breakpoint mixins (mobile-first via max-width for this design) ----
+@mixin mobile {
+  @media (max-width: #{v.$bp-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{v.$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: #{v.$bp-laptop}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: #{v.$bp-desktop + 1px}) {
+    @content;
+  }
+}
+
+// ---- Layout helpers ----
+@mixin container {
+  width: 100%;
+  max-width: v.$container-max;
+  margin-inline: auto;
+  padding-inline: v.$container-padding;
+}
+
+@mixin flex-center($gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-between($gap: 0) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin grid-cols($cols, $gap: v.$space-lg) {
+  display: grid;
+  grid-template-columns: repeat($cols, 1fr);
+  gap: $gap;
+}
+
+// ---- Text helpers ----
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin section-title {
+  font-family: v.$font-display;
+  font-weight: v.$fw-semibold;
+  font-size: v.$fs-h2;
+  color: v.$color-text-primary;
+  text-align: center;
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: v.$space-xs;
+  font-family: v.$font-body;
+  font-weight: v.$fw-medium;
+  font-size: v.$fs-body;
+  border: none;
+  border-radius: v.$radius-pill;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color v.$transition-fast, color v.$transition-fast,
+    transform v.$transition-fast, box-shadow v.$transition-fast;
+
+  &:focus-visible {
+    outline: 2px solid v.$color-primary;
+    outline-offset: 2px;
+  }
+}
+
+@mixin btn-accent {
+  @include btn-base;
+  background-color: v.$color-accent;
+  color: v.$color-white;
+  padding: 0.7rem 1.75rem;
+
+  &:hover {
+    background-color: v.$color-accent-dark;
+  }
+}
+
+@mixin card-surface {
+  background: v.$color-white;
+  border-radius: v.$radius-md;
+  border: 1px solid v.$color-border;
+  transition: box-shadow v.$transition-base, transform v.$transition-base;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

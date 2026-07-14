@@ -1,0 +1,89 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.sidebar-filter {
+  @include m.card-surface;
+  padding: v.$space-lg;
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-lg;
+  align-self: start;
+
+  &__header {
+    @include m.flex-between;
+  }
+
+  &__heading {
+    font-size: v.$fs-h4;
+    font-weight: v.$fw-semibold;
+  }
+
+  &__clear {
+    background: none;
+    border: none;
+    color: v.$color-accent;
+    font-size: v.$fs-small;
+    font-weight: v.$fw-medium;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__group {
+    border-top: 1px solid v.$color-border;
+    padding-top: v.$space-md;
+
+    &:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  &__title {
+    font-size: v.$fs-body;
+    font-weight: v.$fw-semibold;
+    margin-bottom: v.$space-sm;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: v.$space-sm;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: v.$space-xs;
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    cursor: pointer;
+
+    input[type='checkbox'] {
+      width: 15px;
+      height: 15px;
+      accent-color: v.$color-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__count {
+    margin-left: auto;
+    color: v.$color-text-muted;
+    font-size: v.$fs-xs;
+  }
+
+  &__range {
+    width: 100%;
+    accent-color: v.$color-primary;
+  }
+
+  &__price-readout {
+    @include m.flex-between;
+    font-size: v.$fs-small;
+    color: v.$color-text-secondary;
+    margin-top: v.$space-2xs;
+  }
+}

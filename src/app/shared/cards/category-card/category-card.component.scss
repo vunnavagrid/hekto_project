@@ -1,0 +1,46 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$space-sm;
+  text-align: center;
+
+  &__image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: v.$color-bg-soft;
+    overflow: hidden;
+    @include m.flex-center;
+    border: 1px solid v.$color-border;
+    transition: border-color v.$transition-fast, box-shadow v.$transition-fast;
+
+    img {
+      width: 70%;
+      height: 70%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  &:hover &__image {
+    border-color: v.$color-primary;
+    box-shadow: v.$shadow-sm;
+  }
+
+  &__name {
+    font-size: v.$fs-body;
+    font-weight: v.$fw-medium;
+    color: v.$color-text-primary;
+  }
+
+  @include m.mobile {
+    &__image {
+      width: 84px;
+      height: 84px;
+    }
+  }
+}

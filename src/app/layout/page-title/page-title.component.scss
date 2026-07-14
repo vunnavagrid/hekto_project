@@ -1,0 +1,48 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.page-title-bar {
+  background: v.$color-bg-titlebar;
+
+  &__inner {
+    @include m.flex-between;
+    padding-block: v.$space-lg;
+
+    @include m.mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: v.$space-xs;
+    }
+  }
+
+  &__title {
+    font-size: v.$fs-h3;
+    font-weight: v.$fw-semibold;
+  }
+
+  &__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: v.$space-xs;
+    font-size: v.$fs-small;
+    color: v.$color-text-muted;
+
+    a {
+      color: v.$color-text-secondary;
+      transition: color v.$transition-fast;
+
+      &:hover {
+        color: v.$color-primary;
+      }
+    }
+
+    .is-current {
+      color: v.$color-primary;
+      font-weight: v.$fw-medium;
+    }
+  }
+
+  &__sep {
+    color: v.$color-border-strong;
+  }
+}

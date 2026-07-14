@@ -1,0 +1,41 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.pagination {
+  @include m.flex-center(v.$space-xs);
+  margin-top: v.$space-2xl;
+
+  &__btn {
+    @include m.flex-center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid v.$color-border;
+    background: v.$color-white;
+    color: v.$color-text-primary;
+    font-size: v.$fs-body;
+    font-weight: v.$fw-medium;
+    cursor: pointer;
+    transition: background-color v.$transition-fast, color v.$transition-fast, border-color v.$transition-fast;
+
+    &:hover:not(:disabled) {
+      border-color: v.$color-primary;
+      color: v.$color-primary;
+    }
+
+    &.is-active {
+      background: v.$color-accent;
+      border-color: v.$color-accent;
+      color: v.$color-white;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--nav {
+      font-size: 1.1rem;
+    }
+  }
+}

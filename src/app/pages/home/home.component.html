@@ -1,0 +1,106 @@
+<!-- Hero -->
+<section class="u-pt-xl">
+  <div class="container">
+    <app-promo-banner
+      variant="hero"
+      eyebrow="Welcome to Hekto"
+      title="New Trendy Collection Headphones"
+      description="We provide premium audio gear at honest prices, designed for everyday listening and built to last."
+      ctaLabel="Shop Now"
+      image="/assets/products/wireless-over-ear-headphones.jpg"
+      badgeLabel="50% OFF"
+      [showDots]="true"
+    />
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-grid">
+      @for (product of (featuredProducts$ | async); track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Latest Products -->
+<section class="section section--soft">
+  <div class="container">
+    <h2 class="section-title">Leatest Products</h2>
+    <div class="product-grid">
+      @for (product of (latestProducts$ | async); track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Unique Features banner -->
+<section class="section">
+  <div class="container">
+    <app-promo-banner
+      variant="feature"
+      title="Unique Features Of Leatest & Trending Poducts"
+      [features]="['Sourced from trusted, quality-checked manufacturers', 'Free shipping on every order over $50', 'Hassle-free 30-day returns, no questions asked']"
+      ctaLabel="Call To Action"
+      image="/assets/products/feature-banner.jpg"
+      imagePosition="left"
+    />
+  </div>
+</section>
+
+<!-- Trending Products -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Trending Products</h2>
+    <div class="product-grid">
+      @for (product of (trendingProducts$ | async); track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Discount Item banner -->
+<section class="section">
+  <div class="container">
+    <app-promo-banner
+      variant="discount"
+      eyebrow="Headphones Compact"
+      title="30% Discount Of All Products"
+      description="A limited-time markdown across our headphone lineup — premium sound, friendlier prices, while stock lasts."
+      ctaLabel="Shop Now"
+      image="/assets/products/wireless-over-ear-headphones.jpg"
+    />
+  </div>
+</section>
+
+<!-- Top Categories -->
+<section class="section section--soft">
+  <div class="container">
+    <h2 class="section-title">Top Categories</h2>
+    <div class="category-grid">
+      @for (category of categories; track category.id) {
+        <app-category-card [category]="category" />
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<app-newsletter />
+
+<!-- Latest Blog -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Leatest Blog</h2>
+    <div class="blog-grid">
+      @for (post of blogPosts; track post.id) {
+        <app-blog-card [post]="post" />
+      }
+    </div>
+  </div>
+</section>

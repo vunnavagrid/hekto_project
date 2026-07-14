@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.cart-page {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: v.$space-xl;
+  align-items: start;
+
+  @include m.laptop {
+    grid-template-columns: 1fr;
+  }
+
+  &__list {
+    @include m.card-surface;
+    padding: v.$space-lg;
+  }
+
+  &__head {
+    display: grid;
+    grid-template-columns: 72px 2fr 0.8fr 1fr 0.8fr 40px;
+    gap: v.$space-md;
+    padding-bottom: v.$space-sm;
+    border-bottom: 1px solid v.$color-border-strong;
+    font-size: v.$fs-small;
+    font-weight: v.$fw-semibold;
+    color: v.$color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+
+    span:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    @include m.tablet {
+      display: none;
+    }
+  }
+}

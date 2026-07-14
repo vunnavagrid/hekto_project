@@ -1,0 +1,172 @@
+@use '../../../styles/variables' as v;
+@use '../../../styles/mixins' as m;
+
+.header {
+  background: v.$color-white;
+  border-bottom: 1px solid v.$color-border;
+
+  &__topbar {
+    background: v.$color-bg-topbar;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: v.$fs-xs;
+
+    @include m.tablet {
+      display: none;
+    }
+  }
+
+  &__topbar-inner {
+    @include m.flex-between;
+    padding-block: v.$space-xs;
+  }
+
+  &__topbar-contact,
+  &__topbar-meta {
+    display: flex;
+    align-items: center;
+    gap: v.$space-lg;
+  }
+
+  &__topbar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: v.$space-2xs;
+    color: inherit;
+
+    svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    &:hover {
+      color: v.$color-white;
+    }
+  }
+
+  &__main {
+    @include m.flex-between;
+    padding-block: v.$space-md;
+  }
+
+  &__logo {
+    font-family: v.$font-display;
+    font-size: 1.75rem;
+    font-weight: v.$fw-semibold;
+    color: v.$color-primary;
+    letter-spacing: 0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: v.$space-xl;
+
+    a {
+      font-weight: v.$fw-medium;
+      font-size: v.$fs-body;
+      color: v.$color-text-primary;
+      padding-block: v.$space-2xs;
+      border-bottom: 2px solid transparent;
+      transition: color v.$transition-fast, border-color v.$transition-fast;
+
+      &:hover,
+      &.is-active {
+        color: v.$color-primary;
+        border-color: v.$color-primary;
+      }
+    }
+
+    @include m.tablet {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: v.$color-white;
+      border-bottom: 1px solid v.$color-border;
+      box-shadow: v.$shadow-md;
+      padding: v.$space-sm v.$container-padding;
+      transform: translateY(-8px);
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity v.$transition-base, transform v.$transition-base;
+      z-index: 50;
+
+      a {
+        width: 100%;
+        padding-block: v.$space-sm;
+        border-bottom: 1px solid v.$color-border;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      &.is-open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: v.$space-sm;
+  }
+
+  &__icon-btn {
+    @include m.flex-center;
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid v.$color-border;
+    background: v.$color-white;
+    color: v.$color-text-primary;
+    cursor: pointer;
+    transition: border-color v.$transition-fast, color v.$transition-fast;
+
+    svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    &:hover {
+      border-color: v.$color-primary;
+      color: v.$color-primary;
+    }
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding-inline: 4px;
+    border-radius: v.$radius-pill;
+    background: v.$color-accent;
+    color: v.$color-white;
+    font-size: 0.625rem;
+    font-weight: v.$fw-semibold;
+    @include m.flex-center;
+  }
+
+  &__menu-toggle {
+    display: none;
+
+    @include m.tablet {
+      display: inline-flex;
+    }
+  }
+}
+
+.header__main {
+  position: relative;
+}

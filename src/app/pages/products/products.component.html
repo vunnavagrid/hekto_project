@@ -1,0 +1,85 @@
+<app-page-title title="Products" [breadcrumbs]="[{ label: 'Home', link: '/' }, { label: 'Products' }]" />
+
+<section class="section">
+  <div class="container product-list-page">
+    <app-sidebar-filter
+      [brandOptions]="brandOptions()"
+      [categoryOptions]="categoryOptions()"
+      [priceCeiling]="priceCeiling"
+      (filtersChange)="onFiltersChange($event)"
+    />
+
+    <div class="product-list-page__main">
+      <div class="product-list-page__toolbar">
+        <p class="product-list-page__count">
+          Showing {{ pagedProducts().length }} of {{ sortedProducts().length }} results
+        </p>
+
+        <div class="product-list-page__controls">
+          <label class="product-list-page__field">
+            <span class="visually-hidden">Sort by</span>
+            <select (change)="onSortChange($any($event.target).value)">
+              <option value="default">Default sorting</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating-desc">Top Rated</option>
+              <option value="name-asc">Name: A–Z</option>
+            </select>
+          </label>
+
+          <label class="product-list-page__field">
+            <span class="visually-hidden">Items per page</span>
+            <select (change)="onPageSizeChange($any($event.target).value)">
+              <option value="9">Show: 9</option>
+              <option value="12">Show: 12</option>
+              <option value="24">Show: 24</option>
+            </select>
+          </label>
+
+          <div class="product-list-page__view-toggle" role="group" aria-label="Switch view">
+            <button
+              type="button"
+              [class.is-active]="viewMode() === 'list'"
+              (click)="setViewMode('list')"
+              aria-label="List view"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true"><line x1="3" y1="5" x2="17" y2="5" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="1.6"/><line x1="3" y1="15" x2="17" y2="15" stroke="currentColor" stroke-width="1.6"/></svg>
+            </button>
+            <button
+              type="button"
+              [class.is-active]="viewMode() === 'grid'"
+              (click)="setViewMode('grid')"
+              aria-label="Grid view"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="6" height="6" fill="currentColor"/><rect x="11" y="3" width="6" height="6" fill="currentColor"/><rect x="3" y="11" width="6" height="6" fill="currentColor"/><rect x="11" y="11" width="6" height="6" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      @if (pagedProducts().length === 0) {
+        <p class="product-list-page__empty">No products match the selected filters.</p>
+      } @else if (viewMode() === 'list') {
+        <div class="product-list-page__list">
+          @for (product of pagedProducts(); track product.id) {
+            <app-product-list-item [product]="product" />
+          }
+        </div>
+      } @else {
+        <div class="catalog-grid">
+          @for (product of pagedProducts(); track product.id) {
+            <app-product-card [product]="product" />
+          }
+        </div>
+      }
+
+      @if (totalPages() > 1) {
+        <app-pagination
+          [currentPage]="currentPage()"
+          [totalPages]="totalPages()"
+          (pageChange)="onPageChange($event)"
+        />
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<div class="tabs" role="tablist">
+  @for (tab of tabs(); track tab; let i = $index) {
+    <button
+      type="button"
+      role="tab"
+      class="tabs__btn"
+      [class.is-active]="i === activeIndex()"
+      [attr.aria-selected]="i === activeIndex()"
+      (click)="select(i)"
+    >
+      {{ tab }}
+    </button>
+  }
+</div>

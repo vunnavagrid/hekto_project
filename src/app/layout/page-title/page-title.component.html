@@ -1,0 +1,17 @@
+<div class="page-title-bar">
+  <div class="container page-title-bar__inner">
+    <h1 class="page-title-bar__title">{{ title() }}</h1>
+    <nav class="page-title-bar__breadcrumb" aria-label="Breadcrumb">
+      @for (crumb of breadcrumbs(); track crumb.label; let last = $last) {
+        @if (crumb.link && !last) {
+          <a [routerLink]="crumb.link">{{ crumb.label }}</a>
+        } @else {
+          <span [class.is-current]="last">{{ crumb.label }}</span>
+        }
+        @if (!last) {
+          <span class="page-title-bar__sep" aria-hidden="true">/</span>
+        }
+      }
+    </nav>
+  </div>
+</div>
