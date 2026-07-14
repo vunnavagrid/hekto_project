@@ -1,5 +1,5 @@
 # Angular specific
-/dist/
+# /dist/
 /out-tsc/
 /tmp/
 /coverage/
@@ -12,7 +12,7 @@
 /package-lock.json
 /yarn.lock
 
-# Environment files
+# Environment filesx
 /.env
 
 # Angular CLI and build artefacts
